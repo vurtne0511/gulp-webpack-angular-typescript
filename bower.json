@@ -1,0 +1,22 @@
+{
+  "name": "angular2-demo",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "朱松杰 <vurtne0511@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "^2.3.3",
+    "jxbapp-admin": "^0.0.1-alpha.7"
+  }
+}
