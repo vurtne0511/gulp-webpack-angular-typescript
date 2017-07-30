@@ -1,0 +1,10 @@
+{
+  "port": "3070",
+  "gulp": {
+    "srcDir": "src",
+    "distDir": "dist",
+    "browserSync": {
+      "port": 6080
+    }
+  }
+}

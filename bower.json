@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "requirejs": "^2.3.3",
-    "jxbapp-admin": "^0.0.1-alpha.7"
+    "jxbapp-admin": "^0.0.5",
+    "jxbapp-icon": "*"
   }
 }

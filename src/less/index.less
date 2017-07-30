@@ -1,0 +1,15 @@
+@import "../../bower_components/bootstrap/less/variables.less";
+@import "../../bower_components/bootstrap/less/mixins.less";
+@import "../../bower_components/jxbapp-admin/less/variables.less";
+@import "../../bower_components/jxbapp-admin/less/mixins.less";
+@import (reference) "../../bower_components/jxbapp-admin/less/text.less";
+
+html, body {
+    height: 100%;
+}
+
+@sidebar-open-width : 100px;
+.wrapper {
+    min-width: 1024px;
+    .wrapper-folded-variant(@sidebar-width, @sidebar-open-width, @navbar-width);
+}

@@ -1,16 +1,17 @@
 {
-  "files": [
-    "./main.ts"
-  ],
+  // "files": [
+  //   "./src/main.ts"
+  // ],
   "compilerOptions": {
     "noImplicitAny": true,
-    "module": "commonjs",
+    // "module": "commonjs",
     "target": "es5",
     "moduleResolution": "node",
     "lib": [ "es2015", "dom" ],
-    "sourceMap": false,
+    // "sourceMap": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": false
+    "removeComments": false,
+    "allowJs": true
   }
 }

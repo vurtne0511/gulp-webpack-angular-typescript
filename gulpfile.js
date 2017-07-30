@@ -1,35 +1,94 @@
 const gulp = require("gulp");
-const browserify = require("browserify");
+const less = require('gulp-less');
 const source = require('vinyl-source-stream');
-const tsify = require("tsify");
+
+const notify = require("gulp-notify");
 
 const path = require('path');
-
-gulp.task("default", () => {
-    return browserify({ basedir: '.', debug: true, entries: ['main.ts'], cache: {}, packageCache: {} })
-        .plugin(tsify)
-        .bundle()
-        .pipe(source('bundle.js'))
-        .pipe(gulp.dest("dist"));
-    }
-);
+const del = require('del');
 
 const express = require('express');
 
-const port = 3070;
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
+
+// 读取配置文件
+const config = require('./config');
+
+let webpackConfig = require('./webpack.config.js');
+
+let distDir = path.join(__dirname, config.gulp.distDir || 'dist');
+let srcDir = path.join(__dirname, config.gulp.srcDir || 'src');
+
+let files = {
+    'ts': path.join(srcDir, '**/*.ts'),
+    'less': path.join(srcDir, 'less/**/*.less'),
+    'html': path.join(srcDir, '**/*.html'),
+    'assets': path.join(srcDir, 'assets/**/*')
+};
+
+// 错误处理
+let handlerError = function () {
+    let args = Array.prototype.slice.call(arguments);
+    notify.onError({
+        title: 'compile error',
+        message: '<%=error.message %>'
+    }).apply(this, args);//替换为当前对象
+
+    this.emit(); //提交
+};
+
+gulp.task('angular-compile', () => {
+    webpackConfig.watch = true;
+    return gulp.src('')
+        .pipe(webpackStream(webpackConfig, webpack))
+        .on('error', handlerError)
+        .pipe(gulp.dest(distDir));
+});
+
+gulp.task('less-compile', () => {
+    return gulp.src(files.less)
+        .pipe(less())
+        .on('error', handlerError)
+        .pipe(gulp.dest(path.join(distDir, 'css')))
+});
+
+gulp.task('assets-resolve', () => {
+    return gulp.src(files.assets)
+        .pipe(gulp.dest(path.join(distDir, 'assets')));
+});
+
+gulp.task('html-resolve', () => {
+    return gulp.src(files.html)
+        .on('error', handlerError)
+        .pipe(gulp.dest(distDir));
+});
+
+gulp.task('watch', () => {
+    gulp.watch(files.html, ['html-resolve']);
+    gulp.watch(files.less, ['less-compile']);
+    gulp.watch(files.assets, ['assets-resolve']);
+});
+
+gulp.task('run-server', () => {
+    server.listen(config.port, () => console.log(`Server running`));
+});
+
+gulp.task('clean', () => del([path.join(distDir, '**/*')]));
+
+let devloperTasks = [
+    'angular-compile',
+    'less-compile',
+    'assets-resolve',
+    'html-resolve',
+    'run-server',
+    'watch'
+];
 
 const server = express()
     // 静态资源文件存放路径
-    .use(express.static(path.join(__dirname, './')));
+    .use(express.static(distDir));
 
-gulp.task('run', ['default'], () => {
-    server.listen(port, () => console.log(`Server running`));
+gulp.task('dev', devloperTasks);
 
-    // browserSync.init(null, {
-    //     proxy: 'http://localhost:' + port,
-    //     files: [filepath.css, filepath.js, filepath.view],
-    //     notify: false,1bc19a 
-    //     open: false,
-    //     port: port + 2000
-    // });
-});
+gulp.task('release');
