@@ -1,18 +1,33 @@
 import { Component } from '@angular/core';
+import { MENU } from './constants/menu';
+
+class UserInterface {
+    sidebarFolded: boolean;
+    navbarFolded: boolean;
+    controlSidebarFolded: boolean;
+    menus: Array<any>;
+    targetSidebar: any;
+    constructor(private brandName:string) {
+
+    }
+}
 
 @Component({
     selector: 'app',
-    template: `
-        <div class="wrapper">
-            <header-bar></header-bar>
-            <navigator></navigator>
-            <frame-group></frame-group>
-            <control-sidebar></control-sidebar>
-        </div>
-    `
+    templateUrl: './app/app.component.html'
 })
 export default class AppComponent {
-    constructor() {
 
+    UI: UserInterface;
+
+    constructor() {
+        this.UI = new UserInterface('Angular 4');
+        this.UI.menus = MENU;
+        this.UI.targetSidebar = MENU[0];
+    }
+
+    changeSidebar(menu: any) {
+        this.UI.targetSidebar = menu;
+        this.UI.navbarFolded = menu.items.length > 0;
     }
 }

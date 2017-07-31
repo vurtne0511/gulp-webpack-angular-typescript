@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
+// 根组件和首页组件引用
 import AppComponent from './app.component';
-import ControlSidebar from './core/control-sidebar/control-sidebar';
-import HeaderBar from './core/header-bar/header-bar';
-import Navigator from './core/navigator/navigator';
-import FrameGroup from './core/frame-group/frame-group';
+import DashboardComponent from './dashboard.component';
 
-require('jxbapp-admin/dist/jxbapp-admin.css');
-require('jxbapp-icon/jxb-icon.css');
+// 路由配置
+const appRoutes: Routes = [
+    { path: '', component: DashboardComponent },
+];
 
+// 根模块
 @NgModule({
-    declarations: [AppComponent, HeaderBar, ControlSidebar, Navigator, FrameGroup],
+    declarations: [AppComponent, DashboardComponent],
     bootstrap: [AppComponent],
-    imports: [BrowserModule]
+    imports: [BrowserModule, RouterModule.forRoot(appRoutes)]
 })
 export class AppModule {
     constructor() {

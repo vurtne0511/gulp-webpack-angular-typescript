@@ -4,6 +4,8 @@ var webpack = require('webpack');
 // bower webpack 插件
 var BowerResolvePlugin = require("bower-resolve-webpack-plugin");
 
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 // path 模块
 var path = require('path');
 
@@ -19,7 +21,7 @@ module.exports = {
     },
     resolve: {
         plugins: [new BowerResolvePlugin()],
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        extensions: ['.ts', '.js'],
         modules: ['bower_components', 'src', 'node_modules'],
     },
     module: {
@@ -34,11 +36,19 @@ module.exports = {
             { test: /\.ts$/, use: ['ts'] }
         ]
     },
-    // plugins: [
-    //     new webpack.ProvidePlugin({})
-    // ],
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['app', 'vendor', 'polyfills']
+        }),
+        // new webpack.optimize.UglifyJsPlugin(),
+        // new HtmlWebpackPlugin({
+        //     template: 'src/index.html'
+        // })
+    ],
     entry: {
-        index: './src/main.ts',
+        app: './src/main.ts',
+        vendor: './src/vendor.ts',
+        polyfills: './src/polyfills.ts'
     },
     output: {
         filename: '[name].js',

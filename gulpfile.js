@@ -15,7 +15,7 @@ const webpackStream = require('webpack-stream');
 // 读取配置文件
 const config = require('./config');
 
-let webpackConfig = require('./webpack.config.js');
+let webpackConfig = require('./webpack.config');
 
 let distDir = path.join(__dirname, config.gulp.distDir || 'dist');
 let srcDir = path.join(__dirname, config.gulp.srcDir || 'src');
@@ -71,7 +71,7 @@ gulp.task('watch', () => {
 });
 
 gulp.task('run-server', () => {
-    server.listen(config.port, () => console.log(`Server running`));
+    server.listen(config.port, () => console.log(`server running`));
 });
 
 gulp.task('clean', () => del([path.join(distDir, '**/*')]));

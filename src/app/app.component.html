@@ -1,0 +1,123 @@
+<div class="wrapper" 
+    [class.sidebar-folded]="UI.sidebarFolded" 
+    [class.navbar-folded]="UI.navbarFolded">
+
+    <div class="header">
+        <a class="logo" href="http://jxbapp.cn" target="_blank"><i class="icon-bang-logo"></i></a>
+        <ul class="header-navbar">
+            <li class="school">
+                <span class="brand-name">{{UI.brandName}}</span>
+            </li>
+        </ul>
+        <ul class="header-navbar header-navbar-right">
+            <li class="dropdown">
+                <a type="button" data-toggle="dropdown"><i class="icon-user"></i><i class="caret"></i></a>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li><a>修改密码</a></li>
+                    <li><a>退出</a></li>
+                </ul>
+            </li>
+            <li data-toggle="control-sidebar" (click)="UI.controlSidebarFolded=!UI.controlSidebarFolded"><i class="icon-cog"></i></li>
+        </ul>
+    </div>
+
+    <div class="navigate">
+        <div class="nav-sidebar">
+            <b class="sidebar-switch" (click)="UI.sidebarFolded=!UI.sidebarFolded"><i class="icon-align-justify"></i></b>
+            <ul>
+                <li *ngFor="let menu of UI.menus" [class.active]="UI.targetSidebar === menu" (click)="changeSidebar(menu)">
+                    <b><i [ngClass]="menu.icon"></i></b><span>{{menu.text}}</span>
+                </li>
+            </ul>
+        </div>
+        <nav class="nav-navbar">
+            <div>
+                <div class="title">{{UI.targetSidebar.text}}</div>
+                <ul>
+                    <li *ngFor="let item of UI.targetSidebar.items" [class.separator]="item.separator">
+                        <b>{{item.text}}</b>
+                    </li>
+                </ul>
+            </div>
+            <!--<div class="sub" ui-sref-active="active">
+            <div class="title back" ng-click="state.back(UI.targetNavbar.name)"><i class="icon-arrow-left"></i></div>
+            <ul>
+                <li ng-repeat="item in UI.targetNavbar.items" ng-class="{'active':state.includes(item.name),'separator':item.separator}">
+                    <b ui-sref="{{item.name}}" ng-bind="item.text"></b>
+                </li>
+            </ul>
+        </div>-->
+        </nav>
+        <!--<b class="sidebar-toggle" ng-class="{'inside':UI.navbarFolded}" ng-click="UI.navbarFolded=!UI.navbarFolded" ng-show="UI.navbarToggleVisible">
+        <i class="glyphicon glyphicon-eject"></i>
+    </b>-->
+    </div>
+    <div class="frame-group">
+        <router-outlet></router-outlet>
+        <!-- <div class="fragment"></div>
+        <div class="fragment"></div>
+        <div class="fragment"></div> -->
+    </div>
+    <div class="control-sidebar control-sidebar-dark" [class.control-sidebar-open]="UI.controlSidebarFolded">
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li class="active"><a href="#control-sidebar-shortcut-options-tab" data-toggle="tab"><i class="icon-th-large-check"></i></a></li>
+            <li><a href="#control-sidebar-preferences-options-tab" data-toggle="tab"><i class="icon-gears"></i></a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="control-sidebar-shortcut-options-tab">
+                <h4 class="control-sidebar-heading">
+                    <span class="icon-object"></span>&nbsp;设置快捷菜单
+                    <small>选择你要显示的快捷菜单</small>
+                </h4>
+                <div class="control-sidebar-box">
+                    <h5 style="margin-top:0px;">已选菜单</h5>
+                    <!--<div class="row">
+                    <div class="col-xs-6" ng-repeat="item in shortcutMenu" style=" padding:5px;">
+                        <button class="btn btn-block btn-checked-primary active" ng-click="shortcutMenuRemove(item)">
+                            <i ng-class="item.icon"></i>&nbsp;{{item.text}}
+                        </button>
+                    </div>
+                </div>-->
+                </div>
+                <h5>可选菜单</h5>
+                <div class="row">
+                    <!--<div class="col-xs-6" ng-repeat="item in $root.navs.shortcut" ng-show="shortcutMenu.indexOf(item)<0" style=" padding:5px;">
+                    <button class="btn btn-checked-primary btn-block" ng-click="shortcutMenuAdd(item)">
+                        <i ng-class="item.icon"></i>&nbsp;{{item.text}}
+                    </button>
+                </div>-->
+                </div>
+            </div>
+            <div class="tab-pane" id="control-sidebar-preferences-options-tab">
+                <h4 class="control-sidebar-heading">
+                    <span class="icon-gears"></span>&nbsp;个人偏好
+                    <small>设定你的偏好</small>
+                </h4>
+                <!--<ul class="control-sidebar-menu">
+                <li ng-repeat="item in interfaceSettings" class="pointer">
+                    <label class="control-sidebar-subheading">
+                        {{item.text}}
+                        <div class="checkbox checkbox-primary pull-right">
+                            <input type="checkbox" value="true" ng-model="item.switch" ng-change="updateSetting()">
+                            <label></label>
+                        </div>
+                    </label>
+                    {{item.description}}
+                </li>
+            </ul>-->
+                <h4 class="control-sidebar-heading">
+                    <span class="icon-paint-solid"></span>&nbsp;皮肤
+                    <small>挑选一套你喜欢的皮肤吧</small>
+                </h4>
+                <!--<div class="control-sidebar-box">-->
+                <!--<ul class="control-sidebar-menu skin-list list-unstyled clearfix">
+                <li ng-repeat="item in $root.themes" ng-click="$root.theme = item.name; updateSetting()" ng-class="{'active':($root.theme || 'default') == item.name}">
+                    <span class="skin-title">{{item.text}}</span>
+                    <div href="javascript:void(0);" class="skin-block full-opacity-hover" ng-style="{'background-color':item.color}"></div>
+                </li>
+            </ul>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
