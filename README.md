@@ -32,7 +32,7 @@ import Component from 'app/core/component';
 interface DashboardComponentScope extends jxb.Scope {
     name: string;
 }
-
+
 @Component({
     inject: ['$scope', '$http'],
     templateUrl: './app/dashboard.component.html'
