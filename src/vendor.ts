@@ -1,13 +1,7 @@
-// Angular
-import '@angular/platform-browser';
-import '@angular/platform-browser-dynamic';
-import '@angular/core';
-import '@angular/common';
-import '@angular/http';
-import '@angular/router';
+import 'jxbapp-admin';
+import 'jxbapp-icon';
+import 'jquery';
 
-// RxJS
-import 'rxjs';
-
-require('jxbapp-admin/dist/jxbapp-admin.css');
-require('jxbapp-icon/jxb-icon.css');
+import 'libs/prototype';
+import 'libs/http';
+import 'libs/notify';

@@ -1,15 +1,60 @@
-@import "../../bower_components/bootstrap/less/variables.less";
-@import "../../bower_components/bootstrap/less/mixins.less";
-@import "../../bower_components/jxbapp-admin/less/variables.less";
-@import "../../bower_components/jxbapp-admin/less/mixins.less";
-@import (reference) "../../bower_components/jxbapp-admin/less/text.less";
+@import "~bootstrap/less/variables.less";
+@import "~bootstrap/less/mixins.less";
+@import "~jxbapp-admin/less/variables.less";
+@import "~jxbapp-admin/less/mixins.less";
+@import (reference) "~jxbapp-admin/less/text.less";
 
 html, body {
     height: 100%;
 }
 
 @sidebar-open-width : 100px;
+
 .wrapper {
     min-width: 1024px;
     .wrapper-folded-variant(@sidebar-width, @sidebar-open-width, @navbar-width);
 }
+
+.header-navbar > li {
+    border-left: 0px;
+    border-right: 0px;
+    &.school {
+        min-width: @navbar-width;
+        text-align: center;   
+    }
+}
+
+select.form-control {
+    background: url("/assets/images/icon-caret.svg") no-repeat right center transparent;
+    background-size: 20px 8px;
+    background-color: #fff;
+}
+
+.virtual-file {
+    opacity: 0;
+    height: 0;
+    outline: none;
+}
+
+.empty {
+    padding: 50px 0;
+    text-align: center;
+    font-size: 18px;
+    &::before {
+        content: '\e966';
+        position: relative;
+        top: 1px;
+        margin-right: 6px;
+        font-family: 'jxb-icon' !important;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+b:focus { outline: none; }
+
+// @import "photo.less";
+// @import "audio.less";
+// @import "map.less";
+// @import "modal.less";

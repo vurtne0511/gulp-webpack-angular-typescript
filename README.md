@@ -6,9 +6,5 @@ npm install
 ```
 
 ```
-bower install
-```
-
-```
-gulp run
+gulp dev
 ```

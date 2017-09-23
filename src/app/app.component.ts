@@ -1,33 +1,66 @@
-import { Component } from '@angular/core';
-import { MENU } from './constants/menu';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { Router, ActivatedRoute, NavigationStart, NavigationEnd } from '@angular/router';
+import menus from 'app/constants/menu';
+
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
 
 class UserInterface {
-    sidebarFolded: boolean;
-    navbarFolded: boolean;
-    controlSidebarFolded: boolean;
-    menus: Array<any>;
-    targetSidebar: any;
-    constructor(private brandName:string) {
-
-    }
+    constructor(
+        private brandName: string,
+        public sidebarFolded: boolean = false,
+        public navbarFolded: boolean = false,
+        public controlSidebarFolded: boolean = false,
+        public menus: Array<any> = null,
+        public targetSidebar: any = null
+    ) { }
 }
 
 @Component({
     selector: 'app',
     templateUrl: './app/app.component.html'
 })
-export default class AppComponent {
+export default class AppComponent implements OnInit {
 
-    UI: UserInterface;
+    UI: UserInterface = new UserInterface('大赛');
 
-    constructor() {
-        this.UI = new UserInterface('Angular 4');
-        this.UI.menus = MENU;
-        this.UI.targetSidebar = MENU[0];
+    constructor(
+        private router: Router,
+        private activatedRoute: ActivatedRoute) {
+        this.UI.menus = menus;
+        this.UI.targetSidebar = menus[0];
+        this.router.events
+            .filter(event => event instanceof NavigationEnd)
+            .map(() => this.activatedRoute)
+            .filter(event => {
+                console.log(event);
+                return ['primary', 'sub', 'sub2'].indexOf(event.outlet) > -1;
+            })
+            .subscribe(event => {
+                console.log(event.firstChild.outlet);
+            });
     }
 
-    changeSidebar(menu: any) {
+    public changeSidebar(menu: any) {
+        if (menu.hasOwnProperty('url')) {
+            this.router.navigate([menu.url]);
+        }
         this.UI.targetSidebar = menu;
         this.UI.navbarFolded = menu.items.length > 0;
+    }
+
+    private getRootRouter(route: ActivatedRoute) {
+        // this.router
+        // let views = $stateObject.views || {};
+        // if (views.hasOwnProperty('@') ||
+        //     views.hasOwnProperty('sub@') ||
+        //     views.hasOwnProperty('sub2@')) {
+        //     return $stateObject;
+        // }
+        // return $stateObject.parent && this.getRootState($stateObject.parent) || $stateObject;
+    }
+
+    public ngOnInit() {
+
     }
 }

@@ -1,6 +1,4 @@
-<div class="wrapper" 
-    [class.sidebar-folded]="UI.sidebarFolded" 
-    [class.navbar-folded]="UI.navbarFolded">
+<div class="wrapper" [class.sidebar-folded]="UI.sidebarFolded" [class.navbar-folded]="UI.navbarFolded">
 
     <div class="header">
         <a class="logo" href="http://jxbapp.cn" target="_blank"><i class="icon-bang-logo"></i></a>
@@ -34,8 +32,8 @@
             <div>
                 <div class="title">{{UI.targetSidebar.text}}</div>
                 <ul>
-                    <li *ngFor="let item of UI.targetSidebar.items" [class.separator]="item.separator">
-                        <b>{{item.text}}</b>
+                    <li *ngFor="let item of UI.targetSidebar.items" routerLinkActive="active" [class.separator]="item.separator">
+                        <b [routerLink]="item.url">{{item.text}}</b>
                     </li>
                 </ul>
             </div>
@@ -53,10 +51,15 @@
     </b>-->
     </div>
     <div class="frame-group">
-        <router-outlet></router-outlet>
-        <!-- <div class="fragment"></div>
-        <div class="fragment"></div>
-        <div class="fragment"></div> -->
+        <div class="fragment">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="fragment">
+            <router-outlet name="sub"></router-outlet>
+        </div>
+        <div class="fragment">
+            <router-outlet name="sub2"></router-outlet>
+        </div>
     </div>
     <div class="control-sidebar control-sidebar-dark" [class.control-sidebar-open]="UI.controlSidebarFolded">
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -69,54 +72,9 @@
                     <span class="icon-object"></span>&nbsp;设置快捷菜单
                     <small>选择你要显示的快捷菜单</small>
                 </h4>
-                <div class="control-sidebar-box">
-                    <h5 style="margin-top:0px;">已选菜单</h5>
-                    <!--<div class="row">
-                    <div class="col-xs-6" ng-repeat="item in shortcutMenu" style=" padding:5px;">
-                        <button class="btn btn-block btn-checked-primary active" ng-click="shortcutMenuRemove(item)">
-                            <i ng-class="item.icon"></i>&nbsp;{{item.text}}
-                        </button>
-                    </div>
-                </div>-->
-                </div>
-                <h5>可选菜单</h5>
-                <div class="row">
-                    <!--<div class="col-xs-6" ng-repeat="item in $root.navs.shortcut" ng-show="shortcutMenu.indexOf(item)<0" style=" padding:5px;">
-                    <button class="btn btn-checked-primary btn-block" ng-click="shortcutMenuAdd(item)">
-                        <i ng-class="item.icon"></i>&nbsp;{{item.text}}
-                    </button>
-                </div>-->
-                </div>
             </div>
             <div class="tab-pane" id="control-sidebar-preferences-options-tab">
-                <h4 class="control-sidebar-heading">
-                    <span class="icon-gears"></span>&nbsp;个人偏好
-                    <small>设定你的偏好</small>
-                </h4>
-                <!--<ul class="control-sidebar-menu">
-                <li ng-repeat="item in interfaceSettings" class="pointer">
-                    <label class="control-sidebar-subheading">
-                        {{item.text}}
-                        <div class="checkbox checkbox-primary pull-right">
-                            <input type="checkbox" value="true" ng-model="item.switch" ng-change="updateSetting()">
-                            <label></label>
-                        </div>
-                    </label>
-                    {{item.description}}
-                </li>
-            </ul>-->
-                <h4 class="control-sidebar-heading">
-                    <span class="icon-paint-solid"></span>&nbsp;皮肤
-                    <small>挑选一套你喜欢的皮肤吧</small>
-                </h4>
-                <!--<div class="control-sidebar-box">-->
-                <!--<ul class="control-sidebar-menu skin-list list-unstyled clearfix">
-                <li ng-repeat="item in $root.themes" ng-click="$root.theme = item.name; updateSetting()" ng-class="{'active':($root.theme || 'default') == item.name}">
-                    <span class="skin-title">{{item.text}}</span>
-                    <div href="javascript:void(0);" class="skin-block full-opacity-hover" ng-style="{'background-color':item.color}"></div>
-                </li>
-            </ul>-->
-                <!--</div>-->
+
             </div>
         </div>
     </div>

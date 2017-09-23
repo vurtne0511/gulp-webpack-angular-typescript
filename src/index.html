@@ -6,13 +6,21 @@
     <title>gulp-webpack-angular-typescript</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./assets/images/favicon.ico">
+    <link rel="bookmark" href="./assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./assets/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 
 <body>
-    <app>Loading AppComponent content ...</app>
+    <app>
+        <div class="loading"><i class="circle"></i><i class="icon-bang-logo"></i></div>
+    </app>
     <script type="text/javascript" src="./polyfills.js"></script>
     <script type="text/javascript" src="./vendor.js"></script>
-    <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="./vendor.angular.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
 </body>
 
 </html>

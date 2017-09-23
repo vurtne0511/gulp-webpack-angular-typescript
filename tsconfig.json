@@ -12,6 +12,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "allowJs": true
+    "allowJs": true,
+    "baseUrl": "src"
   }
 }

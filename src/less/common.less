@@ -1,0 +1,67 @@
+@import "~bootstrap/less/variables.less";
+@import "~bootstrap/less/mixins.less";
+@import "~jxbapp-admin/less/variables.less";
+@import "~jxbapp-admin/less/mixins.less";
+@import "~jxbapp-admin/less/themes.less";
+
+@brand-primary:                 #6f5499;
+@brand-danger:                  #cc0000;
+@brand-success:                 #77b300;
+@brand-warning:                 #ff8800;
+@brand-info:                    #2a9fd6;
+
+@header-navbar-bg:              @brand-primary;
+@header-navbar-text-color:      #fff;
+
+@pagination-active-bg:          @brand-primary;
+@pagination-active-border:      @brand-primary;
+
+
+.loading {
+    position: absolute;
+    margin: 0 !important;
+    padding: 0 !important;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 1000;
+    i {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -7px;
+        margin-top: -25px;
+        font-size: 15px;
+        color: lighten(@gray-light, 10%);
+    }
+    i.circle {
+        width: 36px;
+        height: 36px;
+        margin-left: -18px;
+        margin-top: -36px;
+        background: url(/assets/images/loading_circle.png) center center no-repeat no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        -webkit-animation: 1s linear infinite rotate;
+        animation: 1s linear infinite rotate;
+    }
+    span {
+        display: block;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 50%;
+        margin-top: 10px;
+        color: gray;
+        font-size: 16px;
+        -webkit-animation: twinkling 1s infinite ease-in-out alternate;
+        animation: twinkling 1s infinite ease-in-out alternate;
+    }
+}
+
+body >.loading {
+    position: fixed !important;
+}

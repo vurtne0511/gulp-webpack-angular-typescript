@@ -1,10 +1,22 @@
 {
+  "name": "angular 4",
   "port": "3070",
   "gulp": {
     "srcDir": "src",
     "distDir": "dist",
     "browserSync": {
-      "port": 6080
+      "port": 5070
+    }
+  },
+  "server": {
+    "production": {
+      "primary": "o.jxbapp.com", "root": "jxbapp.com"
+    },
+    "development": {
+      "primary": "120.26.220.160:3020", "root": "120.26.220.160:3000"
+    },
+    "localhost": {
+      "primary": "localhost:3020", "root": "localhost:3000"
     }
   }
 }

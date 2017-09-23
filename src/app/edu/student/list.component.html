@@ -1,0 +1,52 @@
+<div class="content">
+    <div class="content-header">
+        <div class="title">学生管理</div>
+    </div>
+    <div class="content-body">
+        <div class="action-bar">
+            <div class="form-inline">
+                <input type="text" [(ngModel)]="searchParams.keyword" class="form-control" placeholder="请输入">
+                <button type="button" class="btn btn-primary" (click)="search()">搜索</button>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>生日</th>
+                <th>状态</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+            </tr>
+            <tr *ngFor="let item of students | async">
+                <td>{{item.name}}</td>
+                <td>{{item.gender}}</td>
+                <td>{{item.brithday}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.name}}</td>
+                <td><a [routerLink]="['/edu/student', item._id]">{{item.name}}</a></td>
+            </tr>
+        </table>
+        <nav>
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
