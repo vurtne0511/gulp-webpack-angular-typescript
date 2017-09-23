@@ -70,7 +70,7 @@ module.exports = {
     
     plugins: [
         new webpack.ContextReplacementPlugin(
-            /angular(\/)core(\/)@angular/,
+            /angular(\\|\/)core(\\|\/)@angular/,
             path.resolve(__dirname, '../src')
         ),
         new webpack.optimize.CommonsChunkPlugin({
