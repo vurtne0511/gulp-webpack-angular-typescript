@@ -42,6 +42,9 @@ pid
 # NPM 调试日志
 npm-debug.log
 
+# visual studio 配置文件
+/.vs/
+
 # visual studio code 配置文件
 /.vscode/
 
