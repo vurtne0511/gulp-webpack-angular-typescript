@@ -10,7 +10,7 @@ export class StudentDetailComponent implements OnInit {
     id: string;
 
     constructor(private route: ActivatedRoute) {
-        console.log(route);
+
     }
 
     ngOnInit(): void {

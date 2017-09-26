@@ -18,7 +18,8 @@ http.post(`${baseUrl}/staff/signin`, null, (e: any, result: any) => {
         return;
     }
 
-    platformBrowserDynamic().bootstrapModule(AppModule)
+    platformBrowserDynamic()
+        .bootstrapModule(AppModule)
         .then(success => console.log(`angular 4 application bootstrap success`))
         .catch(err => console.error(err));
 });

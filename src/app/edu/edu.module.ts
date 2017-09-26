@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 import { ClassListComponent } from './class/list.component';
 import { ClassDetailComponent } from './class/detail.component';
-import { StudentListComponent } from './student/list.component';
 import { StudentDetailComponent } from './student/detail.component';
+import { StudentListComponent } from './student/list.component';
 
 import { Http } from '@angular/http';
 import { StudentAPIService } from 'app/api/student-api.service';

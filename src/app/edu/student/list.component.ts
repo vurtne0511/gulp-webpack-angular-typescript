@@ -1,7 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+
 import { StudentAPIService } from 'app/api/student-api.service';
+
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+
+// import * as XLSX from 'xlsx';
+// import * as FileSaver from 'file-saver';
 
 @Component({
     selector: 'student-list',
@@ -19,7 +25,9 @@ export class StudentListComponent implements OnInit, OnDestroy {
 
     private searchTerms = new Subject<any>();
 
-    constructor(private studentAPI: StudentAPIService) { }
+    constructor(
+        private studentAPI: StudentAPIService,
+        private router: ActivatedRoute) { }
 
     ngOnInit(): void {
 
@@ -32,6 +40,10 @@ export class StudentListComponent implements OnInit, OnDestroy {
 
     search() {
         this.searchTerms.next(this.searchParams);
+    }
+
+    export(table: HTMLTableElement) {
+
     }
 
     ngOnDestroy() {

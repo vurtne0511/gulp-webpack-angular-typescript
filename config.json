@@ -10,13 +10,16 @@
   },
   "server": {
     "production": {
-      "primary": "o.jxbapp.com", "root": "jxbapp.com"
+      "primary": "o.jxbapp.com",
+      "root": "jxbapp.com"
     },
     "development": {
-      "primary": "120.26.220.160:3020", "root": "120.26.220.160:3000"
+      "primary": "120.26.220.160:3020",
+      "root": "120.26.220.160:3000"
     },
     "localhost": {
-      "primary": "localhost:3020", "root": "localhost:3000"
+      "primary": "localhost:3020",
+      "root": "localhost:3000"
     }
   }
 }

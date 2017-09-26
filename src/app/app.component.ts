@@ -15,7 +15,6 @@ class UserInterface {
         public targetSidebar: any = null
     ) { }
 }
-
 @Component({
     selector: 'app',
     templateUrl: './app/app.component.html'
@@ -27,6 +26,7 @@ export default class AppComponent implements OnInit {
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute) {
+
         this.UI.menus = menus;
         this.UI.targetSidebar = menus[0];
         this.router.events
