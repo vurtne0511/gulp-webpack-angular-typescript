@@ -26,7 +26,7 @@ class JxbRequestOptions extends BaseRequestOptions {
     merge(options?: RequestOptionsArgs): RequestOptions {
 
         if (!options.url.match(/:\/\/|^\/\//)) {
-            options.url = `//${process.env.SERVER}` + options.url;
+            options.url = `http://${process.env.SERVER}` + options.url;
         }
         return super.merge(options);
     }

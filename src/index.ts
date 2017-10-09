@@ -9,7 +9,7 @@ import AppModule from 'app/app.module';
 
 import http from 'libs/http';
 
-let baseUrl = `//${process.env.SERVER}`;
+let baseUrl = `http://${process.env.SERVER}`;
 
 http.post(`${baseUrl}/staff/signin`, null, (e: any, result: any) => {
 

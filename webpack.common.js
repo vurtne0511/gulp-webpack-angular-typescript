@@ -12,6 +12,7 @@ const path = require('path');
 
 // webpack 配置参数
 module.exports = {
+    // target: 'electron-renderer',
     node: {
         fs: "empty"
     },

@@ -8,9 +8,10 @@ import 'rxjs/add/operator/map';
 class UserInterface {
     constructor(
         private brandName: string,
-        public sidebarFolded: boolean = false,
-        public navbarFolded: boolean = false,
-        public controlSidebarFolded: boolean = false,
+        public sidebarFolded = false,
+        public navbarFolded = false,
+        public controlSidebarFolded = false,
+        public navbarToggleVisible = false,
         public menus: Array<any> = null,
         public targetSidebar: any = null
     ) { }
@@ -46,7 +47,7 @@ export default class AppComponent implements OnInit {
             this.router.navigate([menu.url]);
         }
         this.UI.targetSidebar = menu;
-        this.UI.navbarFolded = menu.items.length > 0;
+        this.UI.navbarToggleVisible = this.UI.navbarFolded = menu.items.length > 0;
     }
 
     private getRootRouter(route: ActivatedRoute) {

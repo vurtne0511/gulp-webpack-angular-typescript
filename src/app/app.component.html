@@ -46,9 +46,9 @@
             </ul>
         </div>-->
         </nav>
-        <!--<b class="sidebar-toggle" ng-class="{'inside':UI.navbarFolded}" ng-click="UI.navbarFolded=!UI.navbarFolded" ng-show="UI.navbarToggleVisible">
-        <i class="glyphicon glyphicon-eject"></i>
-    </b>-->
+        <b class="sidebar-toggle" [class.inside]="UI.navbarFolded" (click)="UI.navbarFolded=!UI.navbarFolded" *ngIf="UI.navbarToggleVisible">
+            <i class="glyphicon glyphicon-eject"></i>
+        </b>
     </div>
     <div class="frame-group">
         <div class="fragment">

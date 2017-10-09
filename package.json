@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "gulp-webpack-angular-typescript",
   "repository": "gulp-webpack-angular-typescript",
-  "main": "./src/index.ts",
+  "main": "electron.js",
   "author": "jxbapp.com",
   "private": true,
   "dependencies": {
@@ -81,6 +81,6 @@
     "webpack-dev-server": "^2.6.1",
     "webpack-merge": "^4.1.0",
     "webpack-notifier": "^1.5.0",
-    "webpack-stream": "github:jeroennoten/webpack-stream#patch-1"
+    "webpack-stream": "^4.0.0"
   }
 }

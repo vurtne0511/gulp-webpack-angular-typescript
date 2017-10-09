@@ -1,10 +1,10 @@
-import {
-	app,
-	BrowserWindow
-} from 'electron';
 
+const electron = require('electron');
 const path = require('path');
 const url = require('url');
+
+let app = electron.app;
+let BrowserWindow = electron.BrowserWindow;
 
 let mainWindow;
 

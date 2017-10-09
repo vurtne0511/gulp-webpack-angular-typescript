@@ -15,7 +15,7 @@ import http from 'libs/http';
 import cookies from 'libs/cookies';
 import notify from 'libs/notify';
 
-let baseUrl = `//${process.env.SERVER}`;
+let baseUrl = `http://${process.env.SERVER}`;
 
 if (process.env.ENV === 'production' && location.protocol === 'http:') {
     location.protocol = 'https:';
